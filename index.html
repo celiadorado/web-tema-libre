@@ -1,59 +1,333 @@
+​
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <title>Bloom & Glow | Inicio</title>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="www.w3schools.com">
-    <link rel="stylesheet" href="fonts.googleapis.com">
-    <style>
-        body, h1, h2, h3, h4, h5 { font-family: "Karla", sans-serif; }
-        body { background-color: #fff5f7; }
-        .cabecera-rosa { background-color: #ffd1dc !important; color: white !important; }
-        .texto-pink { color: #d16a8c; }
-        .card-aesthetic { background-color: white; border-radius: 20px; border: none; margin-bottom: 20px; }
-        .enlace-jjj { font-weight: bold; color: #d16a8c !important; }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Stranger Things Fan Site</title>
+
+<!-- Google Fonts: Pirata One para títulos + Open Sans para texto -->
+<link href="https://fonts.googleapis.com/css2?family=Pirata+One&family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+
+<!-- Font Awesome -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+<style>
+/* GLOBAL */
+body, html {
+  margin: 0;
+  padding: 0;
+  font-family: 'Open Sans', sans-serif;
+  color: #f5f5f5;
+  background-color: #000;
+  scroll-behavior: smooth;
+  overflow-x: hidden;
+}
+h1,h2,h3,h4,h5 {
+  font-family: 'Pirata One', cursive;
+  margin: 0 0 10px 0;
+  color: #ff4444;
+}
+a { text-decoration: none; color: inherit; }
+
+/* NAVBAR */
+.navbar {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  background-color: rgba(0,0,0,0.85);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 30px;
+  z-index: 1000;
+}
+.navbar a {
+  color: #f5f5f5;
+  margin: 0 15px;
+  font-weight: 600;
+  transition: color 0.3s;
+}
+.navbar a:hover { color: #ff0000; }
+.navbar .logo { font-size: 2em; color: #ff0000; font-weight: bold; }
+
+/* HERO */
+.hero {
+  height: 100vh;
+  background: url('images/upside-down-bg.jpg') center/cover no-repeat;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+.hero::after {
+  content:"";
+  position: absolute;
+  top:0; left:0; right:0; bottom:0;
+  background: rgba(0,0,0,0.5);
+}
+.hero-content {
+  position: relative;
+  color: #ff0000;
+  z-index: 1;
+}
+.hero-content h1 { font-size: 4em; margin-bottom: 20px; text-shadow: 0 0 15px #ff0000; }
+.hero-content p { font-size: 1.5em; margin-bottom: 30px; }
+.hero-content .btn {
+  background-color: #ff0000;
+  color: #fff;
+  padding: 15px 30px;
+  border: none;
+  font-size: 1em;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+.hero-content .btn:hover { background-color: #aa0000; transform: scale(1.05); }
+
+/* SECTIONS */
+.section {
+  padding: 80px 10%;
+}
+.section h2 { text-align: center; margin-bottom: 40px; }
+.section p { max-width: 800px; margin: 0 auto 20px auto; line-height: 1.7; }
+
+/* TIMELINE */
+.timeline {
+  position: relative;
+  margin: 50px 0;
+}
+.timeline::before {
+  content:'';
+  position: absolute;
+  left: 50%;
+  width: 4px;
+  background: #ff0000;
+  top:0; bottom:0;
+  transform: translateX(-50%);
+}
+.timeline-item {
+  position: relative;
+  width: 50%;
+  padding: 20px 40px;
+  box-sizing: border-box;
+}
+.timeline-item:nth-child(odd) { left: 0; text-align: right; }
+.timeline-item:nth-child(even) { left: 50%; text-align: left; }
+.timeline-item h4 { color: #ff4444; }
+.timeline-item p { background: rgba(0,0,0,0.7); padding: 15px; border-radius: 5px; }
+
+/* PERSONAJES & VILLANOS */
+.grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 30px;
+}
+.grid-card {
+  background: rgba(30,30,30,0.9);
+  width: 220px;
+  border-radius: 10px;
+  overflow: hidden;
+  text-align: center;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+.grid-card img {
+  width: 100%;
+  display: block;
+  transition: transform 0.3s, opacity 0.3s;
+}
+.grid-card:hover { transform: translateY(-10px); box-shadow: 0 0 20px #ff0000; }
+.grid-card:hover img { transform: scale(1.05); opacity: 0.9; }
+.grid-card p { padding: 10px; }
+
+/* TEMPORADAS */
+.season-card {
+  background: rgba(30,30,30,0.9);
+  margin: 20px;
+  border-radius: 10px;
+  overflow: hidden;
+  width: 300px;
+  flex: 1;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+.season-card img { width: 100%; }
+.season-card:hover { transform: translateY(-10px); box-shadow: 0 0 20px #ff0000; }
+.season-card h4 { padding: 15px; }
+
+/* GALERÍA */
+.gallery { display: grid; grid-template-columns: repeat(auto-fit,minmax(200px,1fr)); gap: 15px; }
+.gallery img { width: 100%; border-radius: 10px; cursor: pointer; transition: transform 0.3s; }
+.gallery img:hover { transform: scale(1.05); opacity: 0.8; }
+
+/* ICONOS TEMÁTICOS */
+.icons-section {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 40px;
+}
+.icons-card {
+  width: 150px;
+  text-align: center;
+  transition: transform 0.3s;
+}
+.icons-card i {
+  font-size: 3em;
+  color: #ff0000;
+  transition: color 0.3s, transform 0.3s;
+}
+.icons-card:hover { transform: scale(1.1); }
+.icons-card:hover i { color: #ff8800; }
+
+/* FOOTER */
+footer {
+  background: #000;
+  color: #f5f5f5;
+  text-align: center;
+  padding: 40px 20px;
+}
+footer a { color: #ff0000; margin: 0 10px; font-size: 1.5em; transition: 0.3s; }
+footer a:hover { color: #fff; }
+
+/* ANIMACIÓN DE FONDO TIPO "UPSIDEDOWN" */
+#upside-bg {
+  position: fixed;
+  top:0;
+  left:0;
+  width:100%;
+  height:100%;
+  background: url('images/upside-down-bg.jpg') repeat;
+  background-size: cover;
+  z-index: -1;
+  animation: moveBg 60s linear infinite;
+}
+@keyframes moveBg {
+  0% { background-position: 0 0; }
+  50% { background-position: 1000px 500px; }
+  100% { background-position: 0 0; }
+}
+
+/* RESPONSIVE */
+@media(max-width:768px){
+  .timeline-item { width: 100%; text-align: left; padding-left: 20px; padding-right: 20px; }
+  .timeline::before { left: 20px; }
+  .grid-card, .season-card { width: 90%; }
+}
+</style>
 </head>
 <body>
 
-<div class="w3-bar w3-white w3-card w3-padding">
-  <a href="index.html" class="w3-bar-item w3-button w3-round">INICIO</a>
-  <a href="rutinas.html" class="w3-bar-item w3-button enlace-jjj">jjj RUTINAS</a>
-  <a href="moda.html" class="w3-bar-item w3-button enlace-jjj">jjj MODA</a>
-  <a href="organizacion.html" class="w3-bar-item w3-button enlace-jjj">jjj ORGANIZACIÓN</a>
-</div>
+<!-- FONDO ANIMADO -->
+<div id="upside-bg"></div>
 
-<div class="w3-content" style="max-width:1200px">
-  <header class="w3-container w3-center w3-padding-48"> 
-    <h1 class="texto-pink" style="font-size: 50px; letter-spacing: 5px;"><b>BLOOM & GLOW</b></h1>
-    <p>Tu espacio de inspiración en <span class="w3-tag cabecera-rosa">2026</span></p>
-  </header>
-
-  <div class="w3-row">
-    <div class="w3-col l8 s12">
-      <div class="w3-card-4 w3-margin card-aesthetic">
-        <img src="images.pexels.com" alt="Home" style="width:100%; border-radius: 20px 20px 0 0;">
-        <div class="w3-container">
-          <h3 class="texto-pink"><b>Bienvenida a tu Glow Up</b></h3>
-          <h5>Tu mejor versión comienza aquí, <span class="w3-opacity">Enero 2026</span></h5>
-          <p>Bloom & Glow es una web diseñada por dos alumnas de 4º de la ESO para ayudarte a florecer. Aquí encontrarás consejos sobre cuidado personal, tendencias y cómo organizar tu vida escolar con estilo.</p>
-        </div>
-      </div>
-    </div>
-
-    <div class="w3-col l4">
-      <div class="w3-card w3-margin card-aesthetic">
-        <div class="w3-container w3-padding cabecera-rosa"><h4>Sobre Nosotras</h4></div>
-        <div class="w3-container w3-white"><p>Somos dos estudiantes apasionadas por el diseño y la estética Pink. ¡Disfruta de la web!</p></div>
-      </div>
-    </div>
+<!-- NAVBAR -->
+<div class="navbar">
+  <div class="logo">STRANGER</div>
+  <div class="links">
+    <a href="#home">Home</a>
+    <a href="#about">Serie</a>
+    <a href="#timeline">Timeline</a>
+    <a href="#characters">Personajes</a>
+    <a href="#villains">Villanos</a>
+    <a href="#seasons">Temporadas</a>
+    <a href="#gallery">Galería</a>
+    <a href="#icons">Iconos</a>
   </div>
 </div>
 
-<footer class="w3-container w3-padding-32 w3-margin-top w3-center" style="background-color: #333; color: white;">
-  <p>Bloom & Glow 2026</p>
-  <p>Enlace a la <a href="www.w3schools.com" target="_blank" style="color: #ffd1dc;">plantilla</a> base.</p>
+<!-- HERO -->
+<section class="hero" id="home">
+  <div class="hero-content">
+    <h1>STRANGER THINGS</h1>
+    <p>Explora el Upside Down y todos sus misterios</p>
+    <button class="btn" onclick="location.href='#timeline'">Explora la Serie</button>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section class="section" id="about">
+  <h2>Sobre la Serie</h2>
+  <p>Stranger Things es una serie de ciencia ficción y terror creada por los hermanos Duffer. Se centra en un grupo de niños que descubren una dimensión paralela llamada Upside Down tras la desaparición de Will Byers.</p>
+  <p>La serie combina nostalgia ochentera, amistad, terror y ciencia ficción, mostrando la evolución de los personajes y su lucha contra fuerzas sobrenaturales.</p>
+</section>
+
+<!-- TIMELINE -->
+<section class="section" id="timeline">
+  <h2>Línea Temporal</h2>
+  <div class="timeline">
+    <div class="timeline-item"><h4>1983 - Temporada 1</h4><p>Desaparición de Will Byers. Aparece Eleven y el Demogorgon.</p></div>
+    <div class="timeline-item"><h4>1984 - Temporada 2</h4><p>El Mind Flayer amenaza Hawkins. Eleven descubre sus orígenes.</p></div>
+    <div class="timeline-item"><h4>1985 - Temporada 3</h4><p>Base rusa y Starcourt Mall. Hopper aparentemente muere.</p></div>
+    <div class="timeline-item"><h4>1986 - Temporada 4</h4><p>Vecna aterroriza Hawkins. Revelan el origen del Upside Down y de Eleven.</p></div>
+  </div>
+</section>
+
+<!-- PERSONAJES -->
+<section class="section" id="characters">
+  <h2>Personajes Principales</h2>
+  <div class="grid">
+    <div class="grid-card"><img src="images/eleven.jpg"><p><b>Eleven</b><br>Niña con poderes psíquicos</p></div>
+    <div class="grid-card"><img src="images/mike.jpg"><p><b>Mike Wheeler</b><br>Líder del grupo</p></div>
+    <div class="grid-card"><img src="images/dustin.jpg"><p><b>Dustin</b><br>Genio de la tecnología</p></div>
+    <div class="grid-card"><img src="images/lucas.jpg"><p><b>Lucas</b><br>Valiente y leal</p></div>
+  </div>
+</section>
+
+<!-- VILLANOS -->
+<section class="section" id="villains">
+  <h2>Villanos</h2>
+  <div class="grid">
+    <div class="grid-card"><img src="images/demogorgon.jpg"><p><b>Demogorgon</b><br>Monstruo del Upside Down</p></div>
+    <div class="grid-card"><img src="images/mindflayer.jpg"><p><b>Mind Flayer</b><br>Entidad que controla el Upside Down</p></div>
+    <div class="grid-card"><img src="images/vecna.jpg"><p><b>Vecna</b><br>Villano principal temporada 4</p></div>
+  </div>
+</section>
+
+<!-- TEMPORADAS -->
+<section class="section" id="seasons">
+  <h2>Temporadas</h2>
+  <div class="grid">
+    <div class="season-card"><img src="images/s1.jpg"><h4>Temporada 1</h4></div>
+    <div class="season-card"><img src="images/s2.jpg"><h4>Temporada 2</h4></div>
+    <div class="season-card"><img src="images/s3.jpg"><h4>Temporada 3</h4></div>
+    <div class="season-card"><img src="images/s4.jpg"><h4>Temporada 4</h4></div>
+  </div>
+</section>
+
+<!-- GALERÍA -->
+<section class="section" id="gallery">
+  <h2>Galería</h2>
+  <div class="gallery">
+    <img src="images/gallery1.jpg">
+    <img src="images/gallery2.jpg">
+    <img src="images/gallery3.jpg">
+    <img src="images/gallery4.jpg">
+  </div>
+</section>
+
+<!-- ICONOS TEMÁTICOS -->
+<section class="section" id="icons">
+  <h2>Elementos Clave</h2>
+  <div class="icons-section">
+    <div class="icons-card"><i class="fa fa-television"></i><p>Serie</p></div>
+    <div class="icons-card"><i class="fa fa-bug"></i><p>Monstruos</p></div>
+    <div class="icons-card"><i class="fa fa-diamond"></i><p>D&D</p></div>
+    <div class="icons-card"><i class="fa fa-home"></i><p>Hawkins</p></div>
+    <div class="icons-card"><i class="fa fa-lightbulb-o"></i><p>Luces</p></div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <p>&copy; 2026 Stranger Things Fan Site</p>
+  <a href="#"><i class="fa fa-facebook-official"></i></a>
+  <a href="#"><i class="fa fa-instagram"></i></a>
+  <a href="#"><i class="fa fa-twitter"></i></a>
+  <a href="#"><i class="fa fa-youtube-play"></i></a>
 </footer>
+
 </body>
 </html>
