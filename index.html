@@ -3,257 +3,285 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>STRANGER THINGS</title>
-    <link href="https://fonts.googleapis.com/css2?family=Permanent+Marker&family=Creepster&display=swap" rel="stylesheet">
+    <title>STRANGER THINGS | FAN PORTAL</title>
+    <link href="https://fonts.googleapis.com/css2?family=Bangers&family=Special+Elite&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
     <style>
-        @font-face {
-            font-family: 'Stranger Things';
-            src: url('https://strangerthings.com/font.woff2') format('woff2'),
-                 url('https://strangerthings.com/font.woff') format('woff');
-            font-weight: normal;
-            font-style: normal;
+        :root {
+            --st-red: #e71111;
+            --st-red-glow: rgba(231, 17, 17, 0.6);
+            --bg-black: #050505;
+            --panel-dark: rgba(20, 20, 20, 0.9);
+            --st-font-main: 'Bangers', cursive;
+            --st-font-body: 'Special Elite', serif;
         }
 
-        :root {
-            --red-dark: #8b0000;
-            --red-light: #e02a2a;
-            --black: #000;
-            --dark-gray: #1a1a1a;
-            --glow-color: rgba(224, 42, 42, 0.7);
-        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
 
         body {
-            margin: 0;
-            padding: 0;
-            background-color: var(--black);
-            color: #fff;
-            font-family: 'Stranger Things', sans-serif; /* Usaremos esta fuente para los títulos */
+            background-color: var(--bg-black);
+            color: #eee;
+            font-family: var(--st-font-body);
             overflow-x: hidden;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            min-height: 100vh;
-            background-image: url('https://strangerthings.com/background.jpg'); /* Imagen de fondo */
-            background-size: cover;
-            background-position: center;
-            position: relative;
+            background-image: radial-gradient(circle at center, #1a0505 0%, #050505 100%);
         }
 
-        body::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.7); /* Oscurece la imagen de fondo */
+        /* Partículas del Mundo del Revés */
+        .particles {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: url('https://www.transparenttextures.com/patterns/stardust.png');
+            opacity: 0.2;
+            pointer-events: none;
             z-index: 1;
         }
 
         .container {
             position: relative;
             z-index: 2;
-            text-align: center;
-            padding: 20px;
-            background-color: rgba(0, 0, 0, 0.8);
-            border: 2px solid var(--red-dark);
-            box-shadow: 0 0 30px var(--glow-color);
-            border-radius: 10px;
-            max-width: 900px;
-            width: 90%;
-            animation: fadeIn 2s ease-out;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
         }
 
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(-20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        .title {
-            font-family: 'Stranger Things', sans-serif;
-            font-size: clamp(3rem, 10vw, 8rem);
-            color: var(--red-light);
-            text-shadow: 
-                0 0 10px var(--red-light),
-                0 0 20px var(--red-light),
-                0 0 30px var(--red-dark),
-                0 0 40px var(--red-dark),
-                0 0 50px var(--red-dark),
-                0 0 60px var(--red-dark);
-            margin-bottom: 40px;
-            letter-spacing: 5px;
-            position: relative;
-            animation: glitch 1s infinite alternate;
-        }
-
-        @keyframes glitch {
-            0% { text-shadow: 0 0 10px var(--red-light), 0 0 20px var(--red-light), 0 0 30px var(--red-dark), 0 0 40px var(--red-dark), 0 0 50px var(--red-dark), 0 0 60px var(--red-dark); }
-            20% { text-shadow: -2px 0 var(--red-light), 2px 0 var(--red-dark), 0 0 20px var(--red-light), 0 0 30px var(--red-dark), 0 0 40px var(--red-dark), 0 0 50px var(--red-dark), 0 0 60px var(--red-dark); }
-            40% { text-shadow: 2px 0 var(--red-dark), -2px 0 var(--red-light), 0 0 20px var(--red-light), 0 0 30px var(--red-dark), 0 0 40px var(--red-dark), 0 0 50px var(--red-dark), 0 0 60px var(--red-dark); }
-            60% { text-shadow: 0 0 10px var(--red-light), 0 0 20px var(--red-light), 0 0 30px var(--red-dark), 0 0 40px var(--red-dark), 0 0 50px var(--red-dark), 0 0 60px var(--red-dark); }
-            80% { text-shadow: -1px 0 var(--red-dark), 1px 0 var(--red-light), 0 0 20px var(--red-light), 0 0 30px var(--red-dark), 0 0 40px var(--red-dark), 0 0 50px var(--red-dark), 0 0 60px var(--red-dark); }
-            100% { text-shadow: 0 0 10px var(--red-light), 0 0 20px var(--red-light), 0 0 30px var(--red-dark), 0 0 40px var(--red-dark), 0 0 50px var(--red-dark), 0 0 60px var(--red-dark); }
-        }
-
-        .menu-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 20px;
-            margin-top: 40px;
-        }
-
-        .menu-item {
-            background-color: var(--dark-gray);
-            padding: 20px;
-            border: 1px solid var(--red-dark);
-            border-radius: 5px;
-            text-decoration: none;
-            color: #fff;
-            font-family: 'Permanent Marker', cursive;
-            font-size: 1.2rem;
+        /* Header */
+        header {
+            height: 100px;
             display: flex;
-            flex-direction: column;
+            justify-content: space-between;
             align-items: center;
-            justify-content: center;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+            border-bottom: 2px solid var(--st-red);
+            margin-bottom: 40px;
         }
 
-        .menu-item:hover {
-            transform: translateY(-5px) scale(1.02);
-            box-shadow: 0 0 20px var(--glow-color);
-            background-color: rgba(40, 40, 40, 0.8);
+        .logo {
+            font-family: var(--st-font-main);
+            font-size: 2.2rem;
+            color: var(--st-red);
+            text-shadow: 0 0 10px var(--st-red);
+            letter-spacing: 2px;
         }
 
-        .menu-item i {
-            font-size: 3rem;
-            margin-bottom: 10px;
-            color: var(--red-light);
-            text-shadow: 0 0 5px var(--red-light);
+        /* Hero Section */
+        .hero {
+            text-align: center;
+            padding: 60px 0;
+            background: url('https://images.alphacoders.com/882/882477.jpg') no-repeat center center;
+            background-size: cover;
+            border: 2px solid var(--st-red);
+            box-shadow: inset 0 0 100px #000, 0 0 30px var(--st-red-glow);
+            margin-bottom: 50px;
+            position: relative;
         }
 
-        .cta-button {
+        .hero-content {
+            background: rgba(0, 0, 0, 0.7);
+            padding: 40px;
             display: inline-block;
-            margin-top: 60px;
-            padding: 15px 40px;
-            background-color: var(--red-dark);
-            color: #fff;
-            font-family: 'Permanent Marker', cursive;
-            font-size: 1.5rem;
-            text-decoration: none;
-            border: 2px solid var(--red-light);
-            border-radius: 5px;
-            transition: background-color 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease;
-            box-shadow: 0 0 15px var(--glow-color);
-            animation: pulse 2s infinite ease-in-out;
+            border-radius: 10px;
         }
 
-        .cta-button:hover {
-            background-color: var(--red-light);
-            box-shadow: 0 0 25px var(--glow-color), 0 0 50px var(--glow-color);
-            transform: scale(1.05);
+        .hero h1 {
+            font-family: var(--st-font-main);
+            font-size: clamp(3rem, 8vw, 6rem);
+            color: var(--st-red);
+            -webkit-text-stroke: 1px white;
+            margin-bottom: 15px;
         }
 
-        @keyframes pulse {
-            0% { transform: scale(1); box-shadow: 0 0 15px var(--glow-color); }
-            50% { transform: scale(1.03); box-shadow: 0 0 25px var(--glow-color); }
-            100% { transform: scale(1); box-shadow: 0 0 15px var(--glow-color); }
+        /* Grid de Secciones con Fotos */
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-bottom: 80px;
         }
 
-        /* Estilos para el efecto de monitor CRT */
-        .crt::before {
-            content: "";
-            position: absolute;
-            top: 0;
-            left: 0;
+        .info-card {
+            background: var(--panel-dark);
+            border: 1px solid #333;
+            overflow: hidden;
+            transition: 0.4s;
+            position: relative;
+        }
+
+        .info-card:hover {
+            border-color: var(--st-red);
+            transform: translateY(-10px);
+            box-shadow: 0 10px 30px var(--st-red-glow);
+        }
+
+        .card-img {
             width: 100%;
-            height: 100%;
-            background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%), 
-                        linear-gradient(90deg, rgba(255, 0, 0, 0.04), rgba(0, 255, 0, 0.02), rgba(0, 0, 255, 0.04));
-            background-size: 100% 4px, 3px 100%;
-            pointer-events: none;
-            z-index: 100; /* Asegura que esté por encima de todo */
-            opacity: 0.3;
+            height: 200px;
+            object-fit: cover;
+            filter: grayscale(40%);
+            transition: 0.5s;
         }
 
-        .crt::after {
-            content: " ";
-            display: block;
-            position: absolute;
-            top: 0;
-            left: 0;
-            bottom: 0;
-            right: 0;
-            background: rgba(18, 16, 16, 0.1);
-            opacity: 0;
-            z-index: 100;
-            pointer-events: none;
-            animation: flicker 0.15s infinite;
+        .info-card:hover .card-img { filter: grayscale(0%); }
+
+        .card-text {
+            padding: 20px;
+            text-align: center;
         }
 
-        @keyframes flicker {
-            0% { opacity: 0.1; }
-            50% { opacity: 0.3; }
-            100% { opacity: 0.1; }
+        .card-text h3 {
+            font-family: var(--st-font-main);
+            color: var(--st-red);
+            font-size: 1.8rem;
+            margin-bottom: 10px;
         }
 
-        /* Fuentes de iconos - Usaremos Font Awesome para los iconos */
-        @import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css');
+        /* Galería Estilo Mural */
+        .gallery-title {
+            text-align: center;
+            font-family: var(--st-font-main);
+            font-size: 3rem;
+            color: var(--st-red);
+            margin-bottom: 30px;
+        }
+
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 15px;
+            margin-bottom: 80px;
+        }
+
+        .gallery img {
+            width: 100%;
+            height: 150px;
+            object-fit: cover;
+            border: 1px solid var(--st-red);
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .gallery img:hover {
+            transform: scale(1.1);
+            z-index: 5;
+            box-shadow: 0 0 20px var(--st-red);
+        }
+
+        /* Footer */
+        footer {
+            padding: 50px 0;
+            text-align: center;
+            border-top: 2px solid var(--st-red);
+            background: rgba(10, 0, 0, 0.8);
+        }
+
+        .author {
+            color: var(--st-red);
+            font-weight: bold;
+            font-size: 1.2rem;
+            text-transform: uppercase;
+        }
+
+        .btn-upside {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 12px 30px;
+            border: 2px solid var(--st-red);
+            color: white;
+            text-decoration: none;
+            font-family: var(--st-font-main);
+            transition: 0.3s;
+        }
+
+        .btn-upside:hover {
+            background: var(--st-red);
+            box-shadow: 0 0 20px var(--st-red);
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 3.5rem; }
+        }
     </style>
 </head>
-<body class="crt">
+<body>
+
+    <div class="particles"></div>
+
     <div class="container">
-        <h1 class="title">STRANGER THINGS</h1>
+        <header>
+            <div class="logo">HAWKINS 1983</div>
+            <div style="color: var(--st-red); font-size: 0.8rem;"><i class="fas fa-broadcast-tower"></i> SIGNAL: WEAK</div>
+        </header>
 
-        <div class="menu-grid">
-            <a href="#" class="menu-item" data-section="serie">
-                <i class="fas fa-tv"></i>
-                <span>SERIE</span>
-            </a>
-            <a href="#" class="menu-item" data-section="timeline">
-                <i class="fas fa-history"></i>
-                <span>TIMELINE</span>
-            </a>
-            <a href="#" class="menu-item" data-section="personajes">
-                <i class="fas fa-users"></i>
-                <span>PERSONAJES</span>
-            </a>
-            <a href="#" class="menu-item" data-section="villanos">
-                <i class="fas fa-skull"></i>
-                <span>VILLANOS</span>
-            </a>
-            <a href="#" class="menu-item" data-section="temporadas">
-                <i class="fas fa-calendar-alt"></i>
-                <span>TEMPORADAS</span>
-            </a>
-            <a href="#" class="menu-item" data-section="galeria">
-                <i class="fas fa-images"></i>
-                <span>GALERÍA</span>
-            </a>
-        </div>
+        <section class="hero">
+            <div class="hero-content">
+                <h1>STRANGER THINGS</h1>
+                <p>El portal definitivo para los fans de todo el mundo.</p>
+                <a href="#info" class="btn-upside">EXPLORAR ARCHIVOS CLASIFICADOS</a>
+            </div>
+        </section>
 
-        <a href="#" class="cta-button">ENTER THE UPSIDE DOWN</a>
+        <section id="info" class="info-grid">
+            <div class="info-card">
+                <img src="https://images.8tracks.com/cover/i/010/681/061/88851.original-302.jpg?rect=0,0,500,500&q=98&fm=jpg&fit=max" class="card-img" alt="Serie">
+                <div class="card-text">
+                    <h3>LA SERIE</h3>
+                    <p>Misterios sobrenaturales y experimentos secretos en el corazón de Indiana.</p>
+                </div>
+            </div>
+
+            <div class="info-card">
+                <img src="https://wallpapers.com/images/hd/stranger-things-characters-group-08shf67l58f48n9i.jpg" class="card-img" alt="Personajes">
+                <div class="card-text">
+                    <h3>PERSONAJES</h3>
+                    <p>De Once a Steve Harrington. Conoce a los héroes de Hawkins.</p>
+                </div>
+            </div>
+
+            <div class="info-card">
+                <img src="https://static1.srcdn.com/wordpress/wp-content/uploads/2022/06/Stranger-things-villains.jpg" class="card-img" alt="Villanos">
+                <div class="card-text">
+                    <h3>VILLANOS</h3>
+                    <p>Vecna, el Azotamentes y el horror que acecha en las sombras.</p>
+                </div>
+            </div>
+
+            <div class="info-card">
+                <img src="https://i0.wp.com/www.universomarvel.com/wp-content/uploads/2017/10/st20.jpg" class="card-img" alt="Temporadas">
+                <div class="card-text">
+                    <h3>TEMPORADAS</h3>
+                    <p>Guía de episodios de la Temporada 1 a la esperada Temporada Final.</p>
+                </div>
+            </div>
+        </section>
+
+        <h2 class="gallery-title">GALERÍA DE IMÁGENES</h2>
+        <section class="gallery">
+            <img src="https://wallpapercave.com/wp/wp1916301.jpg" alt="1">
+            <img src="https://wallpapercave.com/wp/wp4411644.jpg" alt="2">
+            <img src="https://wallpapercave.com/wp/wp1916335.jpg" alt="3">
+            <img src="https://wallpapercave.com/wp/wp7164433.jpg" alt="4">
+            <img src="https://images3.alphacoders.com/123/1236531.jpg" alt="5">
+            <img src="https://images2.alphacoders.com/102/1023247.jpg" alt="6">
+            <img src="https://images8.alphacoders.com/102/1023253.jpg" alt="7">
+            <img src="https://images6.alphacoders.com/105/1051515.jpg" alt="8">
+        </section>
+
+        <footer>
+            <p>ESTA WEB ESTÁ DESTINADA PARA LOS FANS DE LA SERIE DE TODO EL MUNDO</p>
+            <p style="margin: 15px 0;">Hecho por <span class="author">Celia Dorado</span> & <span class="author">Miriam Velasco</span></p>
+            <p>&copy; 2026 // HAWKINS LABS // "Friends Don't Lie"</p>
+        </footer>
     </div>
 
     <script>
-        // JavaScript para añadir interactividad básica (opcional, podrías expandirlo)
-        document.addEventListener('DOMContentLoaded', () => {
-            const menuItems = document.querySelectorAll('.menu-item');
-            menuItems.forEach(item => {
-                item.addEventListener('click', (e) => {
-                    e.preventDefault();
-                    const section = e.currentTarget.dataset.section;
-                    alert(`Has clicado en la sección: ${section.toUpperCase()}`);
-                    // Aquí podrías añadir lógica para cargar contenido dinámicamente
-                    // o redirigir a una sección específica de la página.
-                });
-            });
+        // Efecto de parpadeo en las luces (flicker)
+        setInterval(() => {
+            const logo = document.querySelector('.logo');
+            logo.style.opacity = Math.random() > 0.9 ? '0.5' : '1';
+        }, 100);
 
-            const ctaButton = document.querySelector('.cta-button');
-            ctaButton.addEventListener('click', (e) => {
-                e.preventDefault();
-                alert('¡Adentrándote en el Upside Down! Cuidado...');
-            });
+        // Alerta al entrar al Mundo del Revés
+        document.querySelector('.btn-upside').addEventListener('click', function(e) {
+            console.log("Entering the Upside Down...");
         });
     </script>
 </body>
