@@ -1,333 +1,261 @@
-​
 <!DOCTYPE html>
 <html lang="es">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Stranger Things Fan Site</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>STRANGER THINGS</title>
+    <link href="https://fonts.googleapis.com/css2?family=Permanent+Marker&family=Creepster&display=swap" rel="stylesheet">
+    <style>
+        @font-face {
+            font-family: 'Stranger Things';
+            src: url('https://strangerthings.com/font.woff2') format('woff2'),
+                 url('https://strangerthings.com/font.woff') format('woff');
+            font-weight: normal;
+            font-style: normal;
+        }
 
-<!-- Google Fonts: Pirata One para títulos + Open Sans para texto -->
-<link href="https://fonts.googleapis.com/css2?family=Pirata+One&family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+        :root {
+            --red-dark: #8b0000;
+            --red-light: #e02a2a;
+            --black: #000;
+            --dark-gray: #1a1a1a;
+            --glow-color: rgba(224, 42, 42, 0.7);
+        }
 
-<!-- Font Awesome -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: var(--black);
+            color: #fff;
+            font-family: 'Stranger Things', sans-serif; /* Usaremos esta fuente para los títulos */
+            overflow-x: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background-image: url('https://strangerthings.com/background.jpg'); /* Imagen de fondo */
+            background-size: cover;
+            background-position: center;
+            position: relative;
+        }
 
-<style>
-/* GLOBAL */
-body, html {
-  margin: 0;
-  padding: 0;
-  font-family: 'Open Sans', sans-serif;
-  color: #f5f5f5;
-  background-color: #000;
-  scroll-behavior: smooth;
-  overflow-x: hidden;
-}
-h1,h2,h3,h4,h5 {
-  font-family: 'Pirata One', cursive;
-  margin: 0 0 10px 0;
-  color: #ff4444;
-}
-a { text-decoration: none; color: inherit; }
+        body::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7); /* Oscurece la imagen de fondo */
+            z-index: 1;
+        }
 
-/* NAVBAR */
-.navbar {
-  position: fixed;
-  top: 0;
-  width: 100%;
-  background-color: rgba(0,0,0,0.85);
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 10px 30px;
-  z-index: 1000;
-}
-.navbar a {
-  color: #f5f5f5;
-  margin: 0 15px;
-  font-weight: 600;
-  transition: color 0.3s;
-}
-.navbar a:hover { color: #ff0000; }
-.navbar .logo { font-size: 2em; color: #ff0000; font-weight: bold; }
+        .container {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+            padding: 20px;
+            background-color: rgba(0, 0, 0, 0.8);
+            border: 2px solid var(--red-dark);
+            box-shadow: 0 0 30px var(--glow-color);
+            border-radius: 10px;
+            max-width: 900px;
+            width: 90%;
+            animation: fadeIn 2s ease-out;
+        }
 
-/* HERO */
-.hero {
-  height: 100vh;
-  background: url('images/upside-down-bg.jpg') center/cover no-repeat;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-  position: relative;
-  overflow: hidden;
-}
-.hero::after {
-  content:"";
-  position: absolute;
-  top:0; left:0; right:0; bottom:0;
-  background: rgba(0,0,0,0.5);
-}
-.hero-content {
-  position: relative;
-  color: #ff0000;
-  z-index: 1;
-}
-.hero-content h1 { font-size: 4em; margin-bottom: 20px; text-shadow: 0 0 15px #ff0000; }
-.hero-content p { font-size: 1.5em; margin-bottom: 30px; }
-.hero-content .btn {
-  background-color: #ff0000;
-  color: #fff;
-  padding: 15px 30px;
-  border: none;
-  font-size: 1em;
-  cursor: pointer;
-  transition: all 0.3s;
-}
-.hero-content .btn:hover { background-color: #aa0000; transform: scale(1.05); }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
 
-/* SECTIONS */
-.section {
-  padding: 80px 10%;
-}
-.section h2 { text-align: center; margin-bottom: 40px; }
-.section p { max-width: 800px; margin: 0 auto 20px auto; line-height: 1.7; }
+        .title {
+            font-family: 'Stranger Things', sans-serif;
+            font-size: clamp(3rem, 10vw, 8rem);
+            color: var(--red-light);
+            text-shadow: 
+                0 0 10px var(--red-light),
+                0 0 20px var(--red-light),
+                0 0 30px var(--red-dark),
+                0 0 40px var(--red-dark),
+                0 0 50px var(--red-dark),
+                0 0 60px var(--red-dark);
+            margin-bottom: 40px;
+            letter-spacing: 5px;
+            position: relative;
+            animation: glitch 1s infinite alternate;
+        }
 
-/* TIMELINE */
-.timeline {
-  position: relative;
-  margin: 50px 0;
-}
-.timeline::before {
-  content:'';
-  position: absolute;
-  left: 50%;
-  width: 4px;
-  background: #ff0000;
-  top:0; bottom:0;
-  transform: translateX(-50%);
-}
-.timeline-item {
-  position: relative;
-  width: 50%;
-  padding: 20px 40px;
-  box-sizing: border-box;
-}
-.timeline-item:nth-child(odd) { left: 0; text-align: right; }
-.timeline-item:nth-child(even) { left: 50%; text-align: left; }
-.timeline-item h4 { color: #ff4444; }
-.timeline-item p { background: rgba(0,0,0,0.7); padding: 15px; border-radius: 5px; }
+        @keyframes glitch {
+            0% { text-shadow: 0 0 10px var(--red-light), 0 0 20px var(--red-light), 0 0 30px var(--red-dark), 0 0 40px var(--red-dark), 0 0 50px var(--red-dark), 0 0 60px var(--red-dark); }
+            20% { text-shadow: -2px 0 var(--red-light), 2px 0 var(--red-dark), 0 0 20px var(--red-light), 0 0 30px var(--red-dark), 0 0 40px var(--red-dark), 0 0 50px var(--red-dark), 0 0 60px var(--red-dark); }
+            40% { text-shadow: 2px 0 var(--red-dark), -2px 0 var(--red-light), 0 0 20px var(--red-light), 0 0 30px var(--red-dark), 0 0 40px var(--red-dark), 0 0 50px var(--red-dark), 0 0 60px var(--red-dark); }
+            60% { text-shadow: 0 0 10px var(--red-light), 0 0 20px var(--red-light), 0 0 30px var(--red-dark), 0 0 40px var(--red-dark), 0 0 50px var(--red-dark), 0 0 60px var(--red-dark); }
+            80% { text-shadow: -1px 0 var(--red-dark), 1px 0 var(--red-light), 0 0 20px var(--red-light), 0 0 30px var(--red-dark), 0 0 40px var(--red-dark), 0 0 50px var(--red-dark), 0 0 60px var(--red-dark); }
+            100% { text-shadow: 0 0 10px var(--red-light), 0 0 20px var(--red-light), 0 0 30px var(--red-dark), 0 0 40px var(--red-dark), 0 0 50px var(--red-dark), 0 0 60px var(--red-dark); }
+        }
 
-/* PERSONAJES & VILLANOS */
-.grid {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 30px;
-}
-.grid-card {
-  background: rgba(30,30,30,0.9);
-  width: 220px;
-  border-radius: 10px;
-  overflow: hidden;
-  text-align: center;
-  transition: transform 0.3s, box-shadow 0.3s;
-}
-.grid-card img {
-  width: 100%;
-  display: block;
-  transition: transform 0.3s, opacity 0.3s;
-}
-.grid-card:hover { transform: translateY(-10px); box-shadow: 0 0 20px #ff0000; }
-.grid-card:hover img { transform: scale(1.05); opacity: 0.9; }
-.grid-card p { padding: 10px; }
+        .menu-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin-top: 40px;
+        }
 
-/* TEMPORADAS */
-.season-card {
-  background: rgba(30,30,30,0.9);
-  margin: 20px;
-  border-radius: 10px;
-  overflow: hidden;
-  width: 300px;
-  flex: 1;
-  transition: transform 0.3s, box-shadow 0.3s;
-}
-.season-card img { width: 100%; }
-.season-card:hover { transform: translateY(-10px); box-shadow: 0 0 20px #ff0000; }
-.season-card h4 { padding: 15px; }
+        .menu-item {
+            background-color: var(--dark-gray);
+            padding: 20px;
+            border: 1px solid var(--red-dark);
+            border-radius: 5px;
+            text-decoration: none;
+            color: #fff;
+            font-family: 'Permanent Marker', cursive;
+            font-size: 1.2rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+        }
 
-/* GALERÍA */
-.gallery { display: grid; grid-template-columns: repeat(auto-fit,minmax(200px,1fr)); gap: 15px; }
-.gallery img { width: 100%; border-radius: 10px; cursor: pointer; transition: transform 0.3s; }
-.gallery img:hover { transform: scale(1.05); opacity: 0.8; }
+        .menu-item:hover {
+            transform: translateY(-5px) scale(1.02);
+            box-shadow: 0 0 20px var(--glow-color);
+            background-color: rgba(40, 40, 40, 0.8);
+        }
 
-/* ICONOS TEMÁTICOS */
-.icons-section {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 40px;
-}
-.icons-card {
-  width: 150px;
-  text-align: center;
-  transition: transform 0.3s;
-}
-.icons-card i {
-  font-size: 3em;
-  color: #ff0000;
-  transition: color 0.3s, transform 0.3s;
-}
-.icons-card:hover { transform: scale(1.1); }
-.icons-card:hover i { color: #ff8800; }
+        .menu-item i {
+            font-size: 3rem;
+            margin-bottom: 10px;
+            color: var(--red-light);
+            text-shadow: 0 0 5px var(--red-light);
+        }
 
-/* FOOTER */
-footer {
-  background: #000;
-  color: #f5f5f5;
-  text-align: center;
-  padding: 40px 20px;
-}
-footer a { color: #ff0000; margin: 0 10px; font-size: 1.5em; transition: 0.3s; }
-footer a:hover { color: #fff; }
+        .cta-button {
+            display: inline-block;
+            margin-top: 60px;
+            padding: 15px 40px;
+            background-color: var(--red-dark);
+            color: #fff;
+            font-family: 'Permanent Marker', cursive;
+            font-size: 1.5rem;
+            text-decoration: none;
+            border: 2px solid var(--red-light);
+            border-radius: 5px;
+            transition: background-color 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease;
+            box-shadow: 0 0 15px var(--glow-color);
+            animation: pulse 2s infinite ease-in-out;
+        }
 
-/* ANIMACIÓN DE FONDO TIPO "UPSIDEDOWN" */
-#upside-bg {
-  position: fixed;
-  top:0;
-  left:0;
-  width:100%;
-  height:100%;
-  background: url('images/upside-down-bg.jpg') repeat;
-  background-size: cover;
-  z-index: -1;
-  animation: moveBg 60s linear infinite;
-}
-@keyframes moveBg {
-  0% { background-position: 0 0; }
-  50% { background-position: 1000px 500px; }
-  100% { background-position: 0 0; }
-}
+        .cta-button:hover {
+            background-color: var(--red-light);
+            box-shadow: 0 0 25px var(--glow-color), 0 0 50px var(--glow-color);
+            transform: scale(1.05);
+        }
 
-/* RESPONSIVE */
-@media(max-width:768px){
-  .timeline-item { width: 100%; text-align: left; padding-left: 20px; padding-right: 20px; }
-  .timeline::before { left: 20px; }
-  .grid-card, .season-card { width: 90%; }
-}
-</style>
+        @keyframes pulse {
+            0% { transform: scale(1); box-shadow: 0 0 15px var(--glow-color); }
+            50% { transform: scale(1.03); box-shadow: 0 0 25px var(--glow-color); }
+            100% { transform: scale(1); box-shadow: 0 0 15px var(--glow-color); }
+        }
+
+        /* Estilos para el efecto de monitor CRT */
+        .crt::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%), 
+                        linear-gradient(90deg, rgba(255, 0, 0, 0.04), rgba(0, 255, 0, 0.02), rgba(0, 0, 255, 0.04));
+            background-size: 100% 4px, 3px 100%;
+            pointer-events: none;
+            z-index: 100; /* Asegura que esté por encima de todo */
+            opacity: 0.3;
+        }
+
+        .crt::after {
+            content: " ";
+            display: block;
+            position: absolute;
+            top: 0;
+            left: 0;
+            bottom: 0;
+            right: 0;
+            background: rgba(18, 16, 16, 0.1);
+            opacity: 0;
+            z-index: 100;
+            pointer-events: none;
+            animation: flicker 0.15s infinite;
+        }
+
+        @keyframes flicker {
+            0% { opacity: 0.1; }
+            50% { opacity: 0.3; }
+            100% { opacity: 0.1; }
+        }
+
+        /* Fuentes de iconos - Usaremos Font Awesome para los iconos */
+        @import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css');
+    </style>
 </head>
-<body>
+<body class="crt">
+    <div class="container">
+        <h1 class="title">STRANGER THINGS</h1>
 
-<!-- FONDO ANIMADO -->
-<div id="upside-bg"></div>
+        <div class="menu-grid">
+            <a href="#" class="menu-item" data-section="serie">
+                <i class="fas fa-tv"></i>
+                <span>SERIE</span>
+            </a>
+            <a href="#" class="menu-item" data-section="timeline">
+                <i class="fas fa-history"></i>
+                <span>TIMELINE</span>
+            </a>
+            <a href="#" class="menu-item" data-section="personajes">
+                <i class="fas fa-users"></i>
+                <span>PERSONAJES</span>
+            </a>
+            <a href="#" class="menu-item" data-section="villanos">
+                <i class="fas fa-skull"></i>
+                <span>VILLANOS</span>
+            </a>
+            <a href="#" class="menu-item" data-section="temporadas">
+                <i class="fas fa-calendar-alt"></i>
+                <span>TEMPORADAS</span>
+            </a>
+            <a href="#" class="menu-item" data-section="galeria">
+                <i class="fas fa-images"></i>
+                <span>GALERÍA</span>
+            </a>
+        </div>
 
-<!-- NAVBAR -->
-<div class="navbar">
-  <div class="logo">STRANGER</div>
-  <div class="links">
-    <a href="#home">Home</a>
-    <a href="#about">Serie</a>
-    <a href="#timeline">Timeline</a>
-    <a href="#characters">Personajes</a>
-    <a href="#villains">Villanos</a>
-    <a href="#seasons">Temporadas</a>
-    <a href="#gallery">Galería</a>
-    <a href="#icons">Iconos</a>
-  </div>
-</div>
+        <a href="#" class="cta-button">ENTER THE UPSIDE DOWN</a>
+    </div>
 
-<!-- HERO -->
-<section class="hero" id="home">
-  <div class="hero-content">
-    <h1>STRANGER THINGS</h1>
-    <p>Explora el Upside Down y todos sus misterios</p>
-    <button class="btn" onclick="location.href='#timeline'">Explora la Serie</button>
-  </div>
-</section>
+    <script>
+        // JavaScript para añadir interactividad básica (opcional, podrías expandirlo)
+        document.addEventListener('DOMContentLoaded', () => {
+            const menuItems = document.querySelectorAll('.menu-item');
+            menuItems.forEach(item => {
+                item.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    const section = e.currentTarget.dataset.section;
+                    alert(`Has clicado en la sección: ${section.toUpperCase()}`);
+                    // Aquí podrías añadir lógica para cargar contenido dinámicamente
+                    // o redirigir a una sección específica de la página.
+                });
+            });
 
-<!-- ABOUT -->
-<section class="section" id="about">
-  <h2>Sobre la Serie</h2>
-  <p>Stranger Things es una serie de ciencia ficción y terror creada por los hermanos Duffer. Se centra en un grupo de niños que descubren una dimensión paralela llamada Upside Down tras la desaparición de Will Byers.</p>
-  <p>La serie combina nostalgia ochentera, amistad, terror y ciencia ficción, mostrando la evolución de los personajes y su lucha contra fuerzas sobrenaturales.</p>
-</section>
-
-<!-- TIMELINE -->
-<section class="section" id="timeline">
-  <h2>Línea Temporal</h2>
-  <div class="timeline">
-    <div class="timeline-item"><h4>1983 - Temporada 1</h4><p>Desaparición de Will Byers. Aparece Eleven y el Demogorgon.</p></div>
-    <div class="timeline-item"><h4>1984 - Temporada 2</h4><p>El Mind Flayer amenaza Hawkins. Eleven descubre sus orígenes.</p></div>
-    <div class="timeline-item"><h4>1985 - Temporada 3</h4><p>Base rusa y Starcourt Mall. Hopper aparentemente muere.</p></div>
-    <div class="timeline-item"><h4>1986 - Temporada 4</h4><p>Vecna aterroriza Hawkins. Revelan el origen del Upside Down y de Eleven.</p></div>
-  </div>
-</section>
-
-<!-- PERSONAJES -->
-<section class="section" id="characters">
-  <h2>Personajes Principales</h2>
-  <div class="grid">
-    <div class="grid-card"><img src="images/eleven.jpg"><p><b>Eleven</b><br>Niña con poderes psíquicos</p></div>
-    <div class="grid-card"><img src="images/mike.jpg"><p><b>Mike Wheeler</b><br>Líder del grupo</p></div>
-    <div class="grid-card"><img src="images/dustin.jpg"><p><b>Dustin</b><br>Genio de la tecnología</p></div>
-    <div class="grid-card"><img src="images/lucas.jpg"><p><b>Lucas</b><br>Valiente y leal</p></div>
-  </div>
-</section>
-
-<!-- VILLANOS -->
-<section class="section" id="villains">
-  <h2>Villanos</h2>
-  <div class="grid">
-    <div class="grid-card"><img src="images/demogorgon.jpg"><p><b>Demogorgon</b><br>Monstruo del Upside Down</p></div>
-    <div class="grid-card"><img src="images/mindflayer.jpg"><p><b>Mind Flayer</b><br>Entidad que controla el Upside Down</p></div>
-    <div class="grid-card"><img src="images/vecna.jpg"><p><b>Vecna</b><br>Villano principal temporada 4</p></div>
-  </div>
-</section>
-
-<!-- TEMPORADAS -->
-<section class="section" id="seasons">
-  <h2>Temporadas</h2>
-  <div class="grid">
-    <div class="season-card"><img src="images/s1.jpg"><h4>Temporada 1</h4></div>
-    <div class="season-card"><img src="images/s2.jpg"><h4>Temporada 2</h4></div>
-    <div class="season-card"><img src="images/s3.jpg"><h4>Temporada 3</h4></div>
-    <div class="season-card"><img src="images/s4.jpg"><h4>Temporada 4</h4></div>
-  </div>
-</section>
-
-<!-- GALERÍA -->
-<section class="section" id="gallery">
-  <h2>Galería</h2>
-  <div class="gallery">
-    <img src="images/gallery1.jpg">
-    <img src="images/gallery2.jpg">
-    <img src="images/gallery3.jpg">
-    <img src="images/gallery4.jpg">
-  </div>
-</section>
-
-<!-- ICONOS TEMÁTICOS -->
-<section class="section" id="icons">
-  <h2>Elementos Clave</h2>
-  <div class="icons-section">
-    <div class="icons-card"><i class="fa fa-television"></i><p>Serie</p></div>
-    <div class="icons-card"><i class="fa fa-bug"></i><p>Monstruos</p></div>
-    <div class="icons-card"><i class="fa fa-diamond"></i><p>D&D</p></div>
-    <div class="icons-card"><i class="fa fa-home"></i><p>Hawkins</p></div>
-    <div class="icons-card"><i class="fa fa-lightbulb-o"></i><p>Luces</p></div>
-  </div>
-</section>
-
-<!-- FOOTER -->
-<footer>
-  <p>&copy; 2026 Stranger Things Fan Site</p>
-  <a href="#"><i class="fa fa-facebook-official"></i></a>
-  <a href="#"><i class="fa fa-instagram"></i></a>
-  <a href="#"><i class="fa fa-twitter"></i></a>
-  <a href="#"><i class="fa fa-youtube-play"></i></a>
-</footer>
-
+            const ctaButton = document.querySelector('.cta-button');
+            ctaButton.addEventListener('click', (e) => {
+                e.preventDefault();
+                alert('¡Adentrándote en el Upside Down! Cuidado...');
+            });
+        });
+    </script>
 </body>
 </html>
+
